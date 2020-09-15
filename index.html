@@ -70,6 +70,7 @@
     }
 
     async function sendMsg() {
+      alert("Message sent");
       // Send messages here.
       if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
         await liff.sendMessages([
