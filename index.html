@@ -12,6 +12,7 @@
   <p id="version"><b>Version:</b> </p>
   <p id="isInClient"><b>isInClient:</b> </p>
   <p id="accessToken"><b>AccessToken:</b> </p>
+
   <img id="pictureUrl">
   <p id="userId"><b>userId:</b> </p>
   <p id="displayName"><b>displayName:</b> </p>
@@ -42,7 +43,7 @@
     console.log("Hello World!")
   </script> -->
 
-  <!-- <script src="https://static.line-scdn.net/liff/edge/versions/2.4.0/sdk.js"></script> -->
+  <script src="https://static.line-scdn.net/liff/edge/versions/2.4.0/sdk.js"></script>
   <script>
     function createUniversalLink() {
     }
@@ -75,12 +76,24 @@
     }
 
     function getEnvironment() {
+      document.getElementById("os").append(liff.getOS());
+      document.getElementById("language").append(liff.getLanguage());
+      document.getElementById("version").append(liff.getVersion());
+      document.getElementById("isInClient").append(liff.isInClient());
+      document.getElementById("accessToken").append(liff.getAccessToken());
+
+      if (liff.isInClient()) {    // open liff in line app
+        document.getElementById("btnLogOut").style.display = "none";
+      } else {    // open liff in web browser
+        document.getElementById("btnMsg").style.display = "none";
+        document.getElementById("btnScanCode").style.display = "none";
+        document.getElementById("btnClose").style.display = "none";
+      }
     }
 
     async function main() {
-      alert("LINE Developers x Skooldio")
-      await liff.init({ liffId: "YOUR-LIFF-ID" })
-      // getEnvironment()
+      await liff.init({ liffId: "1654922438-RQP5ax19" });
+      getEnvironment();
       // getUserProfile()
       // getContext()
       // getFriendship()
