@@ -25,6 +25,7 @@
   <p id="utouId"><b>utouId:</b> </p>
   <p id="roomId"><b>roomId:</b> </p>
   <p id="groupId"><b>groupId:</b> </p>
+
   <p id="friendship"><b>isFriendship:</b> </p>
   <p id="scanCode"><b>Code:</b> </p>
   <p id="isLoggedIn"><b>isLoggedIn:</b> </p>
@@ -72,6 +73,11 @@
     }
 
     function getContext() {
+      document.getElementById("type").append(liff.getContext().type);
+      document.getElementById("viewType").append(liff.getContext().viewType);
+      document.getElementById("utouId").append(liff.getContext().utouId);
+      document.getElementById("roomId").append(liff.getContext().roomId);
+      document.getElementById("groupId").append(liff.getContext().groupId);
     }
 
     async function getUserProfile() {
@@ -103,7 +109,7 @@
       await liff.init({ liffId: "1654922438-RQP5ax19" });
       getEnvironment();
       getUserProfile();
-      // getContext()
+      getContext()
       // getFriendship()
       // createUniversalLink()
     }
