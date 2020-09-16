@@ -29,7 +29,9 @@
   <p id="friendship"><b>isFriendship:</b> </p>
   
   <p id="scanCode"><b>Code:</b> </p>
+  
   <p id="isLoggedIn"><b>isLoggedIn:</b> </p>
+
   <p id="universalLink1"><b>Universal Link:</b> </p>
   <p id="universalLink2"><b>Universal Link with Query params:</b> </p>
   <p><a href="liff/path/?param=9">Link to Path</a></p>
@@ -135,11 +137,15 @@
 
     async function main() {
       await liff.init({ liffId: "1654922438-RQP5ax19" });
-      getEnvironment();
-      getUserProfile();
-      getContext()
-      getFriendship()
-      // createUniversalLink()
+      document.getElementById("isLoggedIn").append(liff.isLoggedIn());
+
+      if (liff.isLoggedIn()) {
+        getEnvironment();
+        getUserProfile();
+        getContext()
+        getFriendship()
+        // createUniversalLink()
+      }
     }
     main()
   </script>
