@@ -150,18 +150,21 @@
     }
 
     async function main() {
-      await liff.init({ liffId: "1654922438-RQP5ax19" });
-      document.getElementById("isLoggedIn").append(liff.isLoggedIn());
+      liff.ready.then(() => {
+        document.getElementById("isLoggedIn").append(liff.isLoggedIn());
 
-      if (liff.isLoggedIn()) {
-        getEnvironment();
-        getUserProfile();
-        getContext();
-        getFriendship();
-        createUniversalLink();
-      } else {
-        // liff.login();
-      }
+        if (liff.isLoggedIn()) {
+          getEnvironment();
+          getUserProfile();
+          getContext();
+          getFriendship();
+          createUniversalLink();
+        } else {
+          liff.login();
+        }
+      });
+
+      await liff.init({ liffId: "1654922438-RQP5ax19" });
     }
     main()
   </script>
